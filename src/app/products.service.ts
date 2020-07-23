@@ -16,18 +16,31 @@ export class ProductsService {
   public loading: boolean = true;
 
   constructor(private http: HttpClient) {
-    this.loadProducts();
+    this.loadProducts().then(()=> {
+      this.loading = false;
+    });
   }
 
   // functions
-  public loadProducts() {
+  private loadProducts() {
     return new Promise( (resolve, reject) => {
       this.http.get(this.urlProducts)
         .subscribe((resp: ProductFirebase[]) => {
           this.products = resp;
-          this.loading = false;
           resolve();
         });
     });    
   }
+
+  // Methods
+  public getProductsByCategory(category: string) {
+    let productsResult: ProductFirebase[] = [];
+    this.products.forEach(product => {
+      if(product.categoria === category) {
+        productsResult.push(product)
+      }
+    });
+    return productsResult;
+  }
+  
 }

@@ -23,14 +23,14 @@
 </div>
 
 <!-- portafolio -->
-<section class="ae-container-fluid ae-container-fluid--inner rk-portfolio pagePortafolio" *ngIf="!productsService.loading">
+<section class="ae-container-fluid ae-container-fluid--inner rk-portfolio pageProductos" *ngIf="!productsService.loading">
     <div class="ae-masonry ae-masonry-md-2 ae-masonry-xl-4">
         <a *ngFor="let product of productsService.products" [routerLink]="['/item', product.id]" href="portfolio-item.html"
             class="animate__animated animate__fadeIn rk-item ae-masonry__item">
             <img src="assets/img/products/{{product.imagen}}" alt="">
             <div [routerLink]="['/item', product.id]" class="item-meta">
-                <h2>{{product.titulo}}</h2>
-                <p>{{product.categoria}}</p>
+                <h2 class="hTittle" >{{product.titulo}}</h2>
+                <p class="pCategory">{{product.categoria}}</p>
             </div>
         </a>
     </div>
