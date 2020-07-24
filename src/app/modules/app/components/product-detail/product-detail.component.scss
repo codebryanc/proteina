@@ -21,18 +21,22 @@ svg rect{
     fill: black;
 }
 
-// page
-.hTittle {
-    font-size: 30px !important;
+// Component
+.divDetail {
+    padding-top: 6%;
 }
 
-.pCategory {
-    font-size: 22px !important;
+.imgProteinaDetail {
+    border-radius: 3%;
+    -webkit-box-shadow: 5px 5px 5px 5px #f7f9fa;
+    box-shadow: 5px 5px 5px 5px #f7f9fa;
 }
 
-.divDisclaimer {
-    margin-top: 7%;
+.hTitle {
     text-align: center;
+    font-size: 42px;
+}
+
+.hsubTitle {
     color: silver;
-    font-size: 20px;
 }

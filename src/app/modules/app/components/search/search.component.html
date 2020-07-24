@@ -1,7 +1,7 @@
 <!-- portafolio -->
 <section class="ae-container-fluid ae-container-fluid--inner rk-portfolio pageProductos" *ngIf="!productsService.loading">
     <div class="ae-masonry ae-masonry-md-2 ae-masonry-xl-4">
-        <a *ngFor="let product of productsService.productsFiltered" [routerLink]="['/item', product.id]" href="portfolio-item.html"
+        <a *ngFor="let product of productsService.productsFiltered" [routerLink]="['/detalle', product.id]" href="portfolio-item.html"
             class="animate__animated animate__fadeIn rk-item ae-masonry__item">
             <img src="assets/img/products/{{product.imagen}}" alt="">
             <div [routerLink]="['/item', product.id]" class="item-meta">

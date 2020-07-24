@@ -1,5 +1,5 @@
 <!-- loading -->
-<div class="svgAnimation" *ngIf="productsService.loading">
+<div class="svgAnimation" *ngIf="!currentItem">
     <!-- title -->
     <h2>Cargando...</h2>
     <!-- icon -->
@@ -22,21 +22,16 @@
     <p>Espere por favor</p>
 </div>
 
-<!-- productos -->
-<section class="ae-container-fluid ae-container-fluid--inner rk-portfolio" *ngIf="!productsService.loading">
-    <div class="ae-masonry ae-masonry-md-2 ae-masonry-xl-4">
-        <a *ngFor="let product of productsService.products" [routerLink]="['/detalle', product.id]" href="portfolio-item.html"
-            class="animate__animated animate__fadeIn rk-item ae-masonry__item">
-            <img src="assets/img/products/{{product.imagen}}" alt="">
-            <div class="item-meta">
-                <h2 class="hTittle" >{{product.titulo}}</h2>
-                <p class="pCategory">{{product.categoria}}</p>
-            </div>
-        </a>
+<!-- detalle -->
+<div class="ae-container-fluid ae-container-fluid--inner rk-portfolio--inner" *ngIf="currentItem">
+    <div class="ae-grid ae-grid--collapse au-xs-ptp-1">
+        <div class="ae-grid__item item-lg-5 au-lg-ptp-1 divDetail">
+            <h4 class="ae-u-bolder hTitle">{{currentItem.titulo}}</h4>
+            <h3 class="ae-u-bolder hsubTitle">{{currentItem.categoria}}</h3>
+            <p class="ae-eta">Aquí puedes agregar {{currentItem.titulo.toLowerCase()}} al carrito</p>
+        </div>
+        <div class="ae-grid__item item-lg-6 item-lg--offset-1 ">
+            <img class="imgProteinaDetail" src="assets/img/products/{{currentItem.imagen}}" alt="Proteína">
+        </div>
     </div>
-</section>
-
-<!-- message disclaimer -->
-<div class="divDisclaimer">
-    Algunas imagenes son de prueba
 </div>

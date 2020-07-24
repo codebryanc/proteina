@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+  public inputSearch: string;
+
   constructor(private productsService: ProductsService,
     public router: Router) { }
 
@@ -19,6 +21,7 @@ export class HeaderComponent implements OnInit {
   public searchProduct(term: string) {
     if(term.length > 0) {
       this.router.navigate(['/busqueda', term]);
+      this.inputSearch = "";
     }
   }
 
