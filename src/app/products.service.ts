@@ -15,6 +15,9 @@ export class ProductsService {
   public products: ProductFirebase[] = [];
   public loading: boolean = true;
 
+  // Search
+  public productsFiltered: ProductFirebase[] = [];
+
   constructor(private http: HttpClient) {
     this.loadProducts().then(()=> {
       this.loading = false;
@@ -41,6 +44,21 @@ export class ProductsService {
       }
     });
     return productsResult;
+  }
+
+  public filterProducst(filterValue: string) {
+    this.productsFiltered = [];
+
+    // For unify the search
+    filterValue = filterValue.toLowerCase();
+
+    this.products.forEach(aProduct => {
+      if(aProduct.categoria.toLowerCase().indexOf(filterValue) >= 0 ||
+      aProduct.titulo.toLowerCase().indexOf(filterValue) >= 0 ) {
+        
+        this.productsFiltered.push(aProduct);
+      }
+    });
   }
   
 }

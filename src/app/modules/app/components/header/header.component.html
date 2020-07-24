@@ -19,23 +19,23 @@
         </h1>
         <nav class="rk-navigation">
         <ul class="rk-menu ulMenu">
-            <li routerLinkActive="active" class="rk-menu__item">
+            <li routerLinkActive="active" class="rk-menu__item" [routerLink]="['/productos']">
                 <a routerLink="home" class="rk-menu__link">Inicio</a>
             </li>
-            <li routerLinkActive="active" class="rk-menu__item">
+            <li routerLinkActive="active" class="rk-menu__item" [routerLink]="['/carrito']">
                 <a routerLink="about" class="rk-menu__link">Carrito</a>
             </li>
         </ul>
         <!-- el formulario de Angular es pesado y no es necesario -->
         <div class="rk-search" >
 
-            <!-- (keyup.enter)="buscarProducto(txtBuscar.value)" -->
             <input type="text"
+                (keyup.enter)="searchProduct(txtSearch.value)"
                 placeholder="Buscar..."
                 id="urku-search"
                 class="rk-search-field inpSearch"
-                #txtBuscar>
-            
+                #txtSearch>
+                
                 <label for="urku-search">
                 <svg>
                     <use xlink:href="../../../../../assets/img/symbols.svg#icon-search"></use>
