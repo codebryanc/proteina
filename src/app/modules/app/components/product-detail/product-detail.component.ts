@@ -14,6 +14,11 @@ export class ProductDetailComponent implements OnInit {
   private item: number = null;
   public currentItem: ProductFirebase = null;
 
+  // desing
+  public btnAddToCartVisible: boolean = true;
+  private countItem: number = 0;
+  public countItemValue: string;
+
   constructor(private route: ActivatedRoute,
     private productService: ProductsService,
     public router: Router) {
@@ -41,6 +46,41 @@ export class ProductDetailComponent implements OnInit {
         this.router.navigate(['/productos']);
       }
     });
+  }
+
+  addToCart() {
+    this.btnAddToCartVisible = false;
+    this.agregar();
+  }
+
+  remover() {
+    this.countItem = this.countItem - 1;
+    
+    if(this.countItem === 0) {
+      this.btnAddToCartVisible = true;
+    }
+    this.setLabel();
+  }
+
+  agregar() {
+    this.countItem = this.countItem + 1;
+    this.setLabel();
+  }
+
+  setLabel() {
+    if(this.countItem > 0) {
+
+      if(this.countItem === 1) {
+        this.countItemValue = this.countItem + ' Kilo';
+      }
+      else if(this.countItem > 1) {
+        this.countItemValue = this.countItem + ' Kilos';
+      }
+
+    }
+    else {
+      this.countItemValue = '';
+    }
   }
 
 }
