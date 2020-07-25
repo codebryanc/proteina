@@ -3,4 +3,5 @@ export interface ProductFirebase {
     categoria: string;
     imagen: string;
     titulo: string;
+    valor: number;
   }
