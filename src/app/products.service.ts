@@ -61,4 +61,31 @@ export class ProductsService {
     });
   }
   
+  public getProductById(id: number) {
+    let result = null;
+    if(id != undefined && id != null && id > 0) { 
+      if(this.loading) {
+        this.loadProducts().then(()=> {
+          result = this.filetProductById(id);
+        });
+      }
+      else {
+        result = this.filetProductById(id);
+      }
+    }
+    
+    return result;
+  }
+
+  private filetProductById(id: number) {
+    let result = null;
+
+    this.products.forEach(product => {
+      if(product.id === id) {
+        result = product;
+      }
+    });
+
+    return result;
+  }
 }
