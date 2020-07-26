@@ -82,6 +82,8 @@ export class ProductsService {
 
     this.products.forEach(product => {
       if(product.id === id) {
+        // Inicializo la cantidad para siempre tomarla del store
+        product.cantidad = 0;
         result = product;
       }
     });

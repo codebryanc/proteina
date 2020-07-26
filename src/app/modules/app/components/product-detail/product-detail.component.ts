@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductsService } from '../../../../products.service';
+
 import { ProductFirebase } from 'src/app/interfaces/ProductFirebase.interface';
+
+import { ProductsService } from '../../../../products.service';
+import { ToolsService } from '../../../../tools.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -21,13 +24,14 @@ export class ProductDetailComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private productService: ProductsService,
-    public router: Router) {
+    private router: Router,
+    private toolsService: ToolsService) {
       setTimeout(() => {
         if(this.item === null) {
           this.router.navigate(['/productos']);
         }
-        else {
-          this.currentItem = this.productService.getProductById(this.item);
+        else if(this.currentItem == null) {
+          this.searchItemInService(this.item);
         }
       }, 2000);
   }
@@ -39,7 +43,7 @@ export class ProductDetailComponent implements OnInit {
         // Item
         this.item = Number(params['item']);
         // Search item
-        this.currentItem = this.productService.getProductById(Number(params['item']));
+        this.searchItemInService(Number(params['item']));
       }
       else {
         this.item = null;
@@ -48,25 +52,13 @@ export class ProductDetailComponent implements OnInit {
     });
   }
 
+  // Desing
   addToCart() {
     this.btnAddToCartVisible = false;
     this.agregar();
   }
 
-  remover() {
-    this.countItem = this.countItem - 1;
-    
-    if(this.countItem === 0) {
-      this.btnAddToCartVisible = true;
-    }
-    this.setLabel();
-  }
-
-  agregar() {
-    this.countItem = this.countItem + 1;
-    this.setLabel();
-  }
-
+  // Functions
   setLabel() {
     if(this.countItem > 0) {
 
@@ -83,4 +75,73 @@ export class ProductDetailComponent implements OnInit {
     }
   }
 
+  updateCountInItem() {
+    this.currentItem.cantidad = this.countItem;
+  }
+
+  // Methods
+  remover() {
+    
+    // remove
+    this.countItem = this.countItem - 1;
+    
+    // update label
+    this.setLabel();
+
+    // update Count
+    this.updateCountInItem();
+
+    if(this.countItem === 0) {
+      // remove in cart
+      this.toolsService.removeProductInCart(this.currentItem);
+      // hide buttons add and remove Cart
+      this.btnAddToCartVisible = true;
+    }
+    else {
+      // save in cart
+      this.toolsService.addProductInCart(this.currentItem);
+    }
+  }
+
+  agregar() {
+
+    // add
+    this.countItem = this.countItem + 1;
+
+    // update label
+    this.setLabel();
+
+    // update Count
+    this.updateCountInItem();
+
+    // save in cart
+    this.toolsService.addProductInCart(this.currentItem);
+  }
+
+  private searchItemInService(item: number) {
+    // Search item
+    this.currentItem = this.productService.getProductById(item);
+    
+    if(this.currentItem) {
+      // Search item in store
+      var itemInStore = <ProductFirebase> this.toolsService.getProductFromCart(this.currentItem);
+      
+      if(itemInStore) {
+        // update item from store
+        this.countItem = itemInStore.cantidad;
+      }
+      
+      this.updateCountInItem();
+      
+      this.setLabel();
+      
+      // Button start cart
+      if(this.countItem === 0) {
+        this.btnAddToCartVisible = true;
+      }
+      else {
+        this.btnAddToCartVisible = false;
+      }
+    }
+  }
 }
