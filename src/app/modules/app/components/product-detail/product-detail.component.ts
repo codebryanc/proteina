@@ -73,6 +73,8 @@ export class ProductDetailComponent implements OnInit {
     else {
       this.countItemValue = '';
     }
+
+    this.currentItem.cantidadLetrero = this.countItemValue;
   }
 
   updateCountInItem() {

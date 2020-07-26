@@ -5,4 +5,5 @@ export interface ProductFirebase {
     titulo: string;
     valor: number;
     cantidad: number;
+    cantidadLetrero: string;
   }
