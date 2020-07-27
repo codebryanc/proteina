@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ToolsService } from '../../../../tools.service';
+import { Router } from '@angular/router';
+import { ProductFirebase } from '../../../../interfaces/ProductFirebase.interface';
 
 @Component({
   selector: 'app-purchase',
@@ -17,7 +19,21 @@ export class PurchaseComponent implements OnInit {
   // Table
   columnsToDisplay = ['category', 'product', 'weight', 'total'];
 
-  constructor(public toolsService: ToolsService) { }
+  // Data
+  private shipping: ProductFirebase = {
+    id: 0,
+    categoria: 'Envío',
+    imagen: 'envio.png',
+    titulo: 'Lo llevamos a tu hogar',
+    cantidad: 1,
+    valor: 4000,
+    cantidadLetrero: "1 envío"
+  };
+
+  constructor(public toolsService: ToolsService,
+    private router: Router) {
+      this.validateShipping();
+  }
 
   ngOnInit(): void {
   }
@@ -35,7 +51,6 @@ export class PurchaseComponent implements OnInit {
   }
 
   openWhatsApp() {
-
     let products = '';
 
     if(this.toolsService.productsInCart){
@@ -48,8 +63,22 @@ export class PurchaseComponent implements OnInit {
       });
     }
 
-    let sendMessage = `Hola, este es un nuevo pedido. Necesito ${products}. Muchas gracias`;
+    if(products != '') { 
+      let sendMessage = `Hola, este es un nuevo pedido. Necesito ${products}. Muchas gracias`;
 
-    window.open(`${this.whatsAppUrl}${this.message}${sendMessage}${this.phone}`, "_blank");
+      window.open(`${this.whatsAppUrl}${this.message}${sendMessage}${this.phone}`, "_blank");
+    }
+    else {
+      console.log("Imposible enviar mensaje a Whatsapp, no hay productos para comprar.");
+      this.router.navigate(['/carrito']); 
+    }
+  }
+
+  // Function
+  validateShipping() {
+    if(this.toolsService.productsInCart.length > 0) {
+        this.toolsService.removeProductInCart(this.shipping, -1);
+        this.toolsService.productsInCart.push(this.shipping);
+    }
   }
 }

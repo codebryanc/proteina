@@ -22,6 +22,10 @@ export class ProductDetailComponent implements OnInit {
   private countItem: number = 0;
   public countItemValue: string;
 
+  // weigth
+  public singular: string = ' kilo';
+  public plural: string = ' kilos';
+
   constructor(private route: ActivatedRoute,
     private productService: ProductsService,
     private router: Router,
@@ -61,14 +65,12 @@ export class ProductDetailComponent implements OnInit {
   // Functions
   setLabel() {
     if(this.countItem > 0) {
-
-      if(this.countItem === 1) {
-        this.countItemValue = this.countItem + ' Kilo';
+      if(this.currentItem.id > 0) {
+        this.countItemValue = this.countItem + (this.countItem === 1 ? this.singular : this.plural);
       }
-      else if(this.countItem > 1) {
-        this.countItemValue = this.countItem + ' Kilos';
+      else {
+        this.countItemValue = this.countItem.toString();
       }
-
     }
     else {
       this.countItemValue = '';

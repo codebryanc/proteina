@@ -9,12 +9,34 @@ import { ProductFirebase } from '../../../../interfaces/ProductFirebase.interfac
 })
 export class BasketComponent implements OnInit {
 
-  constructor(public toolsService: ToolsService) { }
+  // Data
+  private shipping: ProductFirebase = {
+    id: 0,
+    categoria: 'Envío',
+    imagen: 'envio.png',
+    titulo: 'Lo llevamos a tu hogar',
+    cantidad: 1,
+    valor: 4000,
+    cantidadLetrero: "1 envío"
+  };
+
+  // Desing
+  public singular: string = " kilo";
+  
+  constructor(public toolsService: ToolsService) {
+      this.validateShipping();
+   }
 
   ngOnInit(): void {
   }
 
-  // Functions  
+  // Functions
+  validateShipping() {
+    if(this.toolsService.productsInCart.length > 0) {
+        this.toolsService.removeProductInCart(this.shipping, -1);
+        this.toolsService.productsInCart.push(this.shipping);
+    }
+  }
 
   // Methods
   remover(currentItem: ProductFirebase) {

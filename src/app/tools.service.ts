@@ -94,7 +94,9 @@ export class ToolsService {
 
     this.storeInStorage();
 
-    this.showMessage(action);
+    if(action > -1) {
+      this.showMessage(action);
+    }
   }
 
   public getProductFromCart(product: ProductFirebase) {

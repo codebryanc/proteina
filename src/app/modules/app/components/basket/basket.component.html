@@ -29,13 +29,17 @@
         <div class="ae-grid__item item-lg-5 au-lg-ptp-1 divDetail divProduct">
             <h4 class="ae-u-bolder hTitle">{{currentItem.titulo}}</h4>
             <h3 class="ae-u-bolder hsubTitle">{{currentItem.categoria}}</h3>
-            <p class="ae-eta pValor">Valor <a class="silver">{{currentItem.valor|currency:'COP':'symbol-narrow':'4.0'}}</a> por kilo</p>
+            <p class="ae-eta pValor">
+                Valor 
+                <a class="silver">{{currentItem.valor|currency:'COP':'symbol-narrow':'4.0'}}</a>
+                 por <a *ngIf="currentItem.id > 0">{{singular}}</a> <a *ngIf="currentItem.id === 0"> envío</a>
+            </p>
             
             <!-- itemCount -->
             <div class="divAddCart" *ngIf="currentItem.cantidad > 0">
-                <button mat-stroked-button color="warn" (click)="remover(currentItem)" matTooltip="Quitar 1 kilo" matTooltipPosition="left">quitar</button>
+                <button mat-stroked-button color="warn" (click)="remover(currentItem)" matTooltip="Quitar 1 kilo" matTooltipPosition="left" *ngIf="currentItem.id > 0">quitar</button>
                 <button mat-stroked-button disabled>{{currentItem.cantidadLetrero}}</button>
-                <button mat-stroked-button color="primary" (click)="agregar(currentItem)" matTooltip="Agregar 1 kilo" matTooltipPosition="right">agregar</button>
+                <button mat-stroked-button color="primary" (click)="agregar(currentItem)" matTooltip="Agregar 1 kilo" matTooltipPosition="right" *ngIf="currentItem.id > 0" >agregar</button>
             </div>
 
             <!-- total -->
