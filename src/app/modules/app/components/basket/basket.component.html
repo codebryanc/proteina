@@ -45,8 +45,19 @@
             <img class="imgProteinaDetail" src="assets/img/products/{{currentItem.imagen}}" alt="Proteína">
         </div>
     </div>
+    
     <!-- summary -->
     <p class="ae-eta pTotalDeTuCompra">Total de tu compra: <a class="green">{{getTotalPurchase()|currency:'COP':'symbol-narrow':'4.0'}}</a></p>
+
+    <!-- purchase -->
+    <div class="divPurchaseGo">
+        <button mat-fab color="accent" matTooltip="Realizar compra" matTooltipPosition="right" [routerLink]="['/compra']">
+            <mat-icon>attach_money</mat-icon>
+        </button>
+        <div class="divTitle">
+            comprar
+        </div>
+    </div>
 </div>
 
 <!-- empty -->

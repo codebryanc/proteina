@@ -8,7 +8,6 @@ import { ProductFirebase } from './interfaces/ProductFirebase.interface';
 export class ToolsService {
 
   // Key
-  private eventAdd = 'addInCart';
   private allProducts = "proteina_data_cart";
 
   // Productos
@@ -43,13 +42,7 @@ export class ToolsService {
   }
 
   private showMessage(type: number) {
-    $.CrystalNotification({
-      position: 4,
-      sound: false,
-      title: type === 1 ? "Agregado al carrito": "Quitado del carrito",
-      image: type === 1 ? "assets/icon/add.png" : "assets/icon/remove.png",
-      timeout: 3000,
-    });
+    eval('$.CrystalNotification({position: 4,sound: false,title: type === 1 ? "Agregado al carrito": "Quitado del carrito", image: type === 1 ? "assets/icon/add.png" : "assets/icon/remove.png",timeout: 3000,})');
   }
 
   // Methods

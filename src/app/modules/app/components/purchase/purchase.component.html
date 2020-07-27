@@ -1,0 +1,45 @@
+<div class="divSummary">
+
+    <!-- summary -->
+    <table mat-table [dataSource]="toolsService.productsInCart" class="mat-elevation-z8 ">
+
+        <ng-container matColumnDef="category">
+            <th mat-header-cell *matHeaderCellDef class="thSize"> Categoria </th>
+            <td mat-cell *matCellDef="let product" class="tdSize"> {{product.categoria}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="product">
+            <th mat-header-cell *matHeaderCellDef class="thSize"> Producto </th>
+            <td mat-cell *matCellDef="let product" class="tdSize"> {{product.titulo}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="weight">
+            <th mat-header-cell *matHeaderCellDef class="thSize"> Peso </th>
+            <td mat-cell *matCellDef="let product" class="tdSize"> {{product.cantidadLetrero}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="total">
+            <th mat-header-cell *matHeaderCellDef class="thSize"> Valor </th>
+            <td mat-cell *matCellDef="let product" class="tdSizeValue"> {{product.valor*product.cantidad|currency:'COP':'symbol-narrow':'4.0'}}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
+    
+    </table>
+
+    <!-- summary -->
+    <p class="ae-eta pTotalDeTuCompra">Total de tu compra: <a class="green">{{getTotalPurchase()|currency:'COP':'symbol-narrow':'4.0'}}</a></p>
+</div>
+
+<!-- Whatsapp -->
+<div class="divWhatsapp">
+    <!-- message -->
+    <p class="pMessage silver">¡Falta poco!, comunícate con nosotros para recibir tu compra.</p>
+    <!-- action -->
+    <button mat-icon-button color="basic" matTooltip="Enviar mensaje a whatsapp" matTooltipPosition="right" class="btnWhatsapp" (click)="openWhatsApp()">
+        <img src="assets/icon/whatsapp.png">
+    </button>
+    <!-- number -->
+    <p class="pNumber">321 2054503</p>
+</div>

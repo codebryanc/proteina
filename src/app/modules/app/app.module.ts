@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatTableModule } from '@angular/material/table';
 
 import { AppRoutingModule } from '../routing/app-routing.module';
 import { AppComponent } from './components/app/app.component';
@@ -16,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BasketComponent } from './components/basket/basket.component';
 import { SearchComponent } from './components/search/search.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { PurchaseComponent } from './components/purchase/purchase.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
     ProductsComponent,
     ProductDetailComponent,
     BasketComponent,
-    SearchComponent
+    SearchComponent,
+    PurchaseComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,8 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
     MatButtonModule,
     BrowserAnimationsModule,
     MatIconModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatTableModule
   ],
   providers: [
   ],
