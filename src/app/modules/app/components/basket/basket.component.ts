@@ -27,11 +27,11 @@ export class BasketComponent implements OnInit {
 
     if(currentItem.cantidad === 0) {
       // remove in cart
-      this.toolsService.removeProductInCart(currentItem);
+      this.toolsService.removeProductInCart(currentItem, 0);
     }
     else {
       // save in cart
-      this.toolsService.addProductInCart(currentItem);
+      this.toolsService.addOrUpdateProductInCart(currentItem, 0);
     }
   }
 
@@ -44,7 +44,7 @@ export class BasketComponent implements OnInit {
     this.setLabel(currentItem);
 
     // save in cart
-    this.toolsService.addProductInCart(currentItem);
+    this.toolsService.addOrUpdateProductInCart(currentItem, 1);
   }
 
   // Functions

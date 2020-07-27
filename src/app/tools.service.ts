@@ -8,10 +8,12 @@ import { ProductFirebase } from './interfaces/ProductFirebase.interface';
 export class ToolsService {
 
   // Key
+  private eventAdd = 'addInCart';
   private allProducts = "proteina_data_cart";
 
   // Productos
   public productsInCart: ProductFirebase[] = [];
+  public loadingCart: boolean = true;
 
   constructor() {
     this.getProductsFromStore();
@@ -36,10 +38,22 @@ export class ToolsService {
     if(currentDataInStore != null && currentDataInStore != undefined) {
       this.productsInCart = JSON.parse(currentDataInStore);
     }
+
+    this.loadingCart = false;
+  }
+
+  private showMessage(type: number) {
+    $.CrystalNotification({
+      position: 4,
+      sound: false,
+      title: type === 1 ? "Agregado al carrito": "Quitado del carrito",
+      image: type === 1 ? "assets/icon/add.png" : "assets/icon/remove.png",
+      timeout: 3000,
+    });
   }
 
   // Methods
-  public addProductInCart(product: ProductFirebase) {
+  public addOrUpdateProductInCart(product: ProductFirebase, action: number) {
     if(product != null) {
 
       var productsInCartResult: ProductFirebase[] = [];
@@ -64,6 +78,8 @@ export class ToolsService {
       this.productsInCart = productsInCartResult;
 
       this.storeInStorage();
+
+      this.showMessage(action);
     }
   }
 
@@ -72,7 +88,7 @@ export class ToolsService {
     this.storeInStorage();
   }
 
-  public removeProductInCart(product: ProductFirebase) {
+  public removeProductInCart(product: ProductFirebase, action: number) {
     var productsInCartResult: ProductFirebase[] = [];
     
     this.productsInCart.forEach(aProduct => {
@@ -84,6 +100,8 @@ export class ToolsService {
     this.productsInCart = productsInCartResult;
 
     this.storeInStorage();
+
+    this.showMessage(action);
   }
 
   public getProductFromCart(product: ProductFirebase) {
@@ -102,4 +120,5 @@ export class ToolsService {
 
     return productResult;
   }
+
 }

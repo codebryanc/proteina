@@ -47,9 +47,16 @@
                 <button mat-stroked-button disabled>{{countItemValue}}</button>
                 <button mat-stroked-button color="primary" (click)="agregar()" matTooltip="Agregar 1 kilo" matTooltipPosition="right">agregar</button>
             </div>
+
         </div>
         <div class="ae-grid__item item-lg-6 item-lg--offset-1 ">
             <img class="imgProteinaDetail" src="assets/img/products/{{currentItem.imagen}}" alt="Proteína">
+        </div>
+
+        <!-- acciones -->
+        <div class="divAcciones" *ngIf="!btnAddToCartVisible">
+            <button mat-button color="basic" class="silver" [routerLink]="['/productos']">Seguir comprando</button>
+            <button mat-button color="basic" class="silver" [routerLink]="['/carrito']">Ver carrito</button>
         </div>
     </div>
 </div>

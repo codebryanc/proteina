@@ -95,13 +95,13 @@ export class ProductDetailComponent implements OnInit {
 
     if(this.countItem === 0) {
       // remove in cart
-      this.toolsService.removeProductInCart(this.currentItem);
+      this.toolsService.removeProductInCart(this.currentItem, 0);
       // hide buttons add and remove Cart
       this.btnAddToCartVisible = true;
     }
     else {
       // save in cart
-      this.toolsService.addProductInCart(this.currentItem);
+      this.toolsService.addOrUpdateProductInCart(this.currentItem, 0);
     }
   }
 
@@ -117,7 +117,7 @@ export class ProductDetailComponent implements OnInit {
     this.updateCountInItem();
 
     // save in cart
-    this.toolsService.addProductInCart(this.currentItem);
+    this.toolsService.addOrUpdateProductInCart(this.currentItem, 1);
   }
 
   private searchItemInService(item: number) {

@@ -1,5 +1,5 @@
 <!-- loading -->
-<div class="svgAnimation" *ngIf="toolsService.productsInCart.length === 0">
+<div class="svgAnimation" *ngIf="toolsService.loadingCart">
     <!-- title -->
     <h2>Cargando...</h2>
     <!-- icon -->
@@ -47,4 +47,11 @@
     </div>
     <!-- summary -->
     <p class="ae-eta pTotalDeTuCompra">Total de tu compra: <a class="green">{{getTotalPurchase()|currency:'COP':'symbol-narrow':'4.0'}}</a></p>
+</div>
+
+<!-- empty -->
+<div class="emptyCart" *ngIf="toolsService.productsInCart.length === 0">
+    <img src="assets/icon/emptyCart.png" class="imgIcon"/>
+    <p class="pMessage"> Tu carrito esta vacio </p>
+    <button mat-stroked-button color="accent" matTooltip="Ver productos" matTooltipPosition="below" [routerLink]="['/productos']">Ver productos</button>
 </div>
