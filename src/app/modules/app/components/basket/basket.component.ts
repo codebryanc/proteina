@@ -21,8 +21,9 @@ export class BasketComponent implements OnInit {
   };
 
   // Desing
-  public singular: string = " kilo";
-  
+  public singular: string = " libra";
+  public plural:string = " libras";
+
   constructor(public toolsService: ToolsService) {
       this.validateShipping();
    }
@@ -74,10 +75,10 @@ export class BasketComponent implements OnInit {
     if(currentItem.cantidad > 0) {
 
       if(currentItem.cantidad === 1) {
-        currentItem.cantidadLetrero = currentItem.cantidad + ' Kilo';
+        currentItem.cantidadLetrero = currentItem.cantidad + this.singular;
       }
       else if(currentItem.cantidad > 1) {
-        currentItem.cantidadLetrero = currentItem.cantidad + ' Kilos';
+        currentItem.cantidadLetrero = currentItem.cantidad + this.plural;
       }
 
     }

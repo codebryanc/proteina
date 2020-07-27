@@ -23,7 +23,7 @@
 </div>
 
 <!-- detalle -->
-<div class="ae-container-fluid ae-container-fluid--inner rk-portfolio--inner divCart" *ngIf="toolsService.productsInCart.length > 0">
+<div class="ae-container-fluid ae-container-fluid--inner rk-portfolio--inner divCart" *ngIf="toolsService.productsInCart.length > 1">
     <!-- basket -->
     <div class="ae-grid ae-grid--collapse au-xs-ptp-1" *ngFor="let currentItem of toolsService.productsInCart">
         <div class="ae-grid__item item-lg-5 au-lg-ptp-1 divDetail divProduct">
@@ -37,9 +37,9 @@
             
             <!-- itemCount -->
             <div class="divAddCart" *ngIf="currentItem.cantidad > 0">
-                <button mat-stroked-button color="warn" (click)="remover(currentItem)" matTooltip="Quitar 1 kilo" matTooltipPosition="left" *ngIf="currentItem.id > 0">quitar</button>
+                <button mat-stroked-button color="warn" (click)="remover(currentItem)" matTooltip="Quitar 1 {{singular}}" matTooltipPosition="left" *ngIf="currentItem.id > 0">quitar</button>
                 <button mat-stroked-button disabled>{{currentItem.cantidadLetrero}}</button>
-                <button mat-stroked-button color="primary" (click)="agregar(currentItem)" matTooltip="Agregar 1 kilo" matTooltipPosition="right" *ngIf="currentItem.id > 0" >agregar</button>
+                <button mat-stroked-button color="primary" (click)="agregar(currentItem)" matTooltip="Agregar 1 {{singular}}" matTooltipPosition="right" *ngIf="currentItem.id > 0" >agregar</button>
             </div>
 
             <!-- total -->
@@ -65,7 +65,7 @@
 </div>
 
 <!-- empty -->
-<div class="emptyCart" *ngIf="toolsService.productsInCart.length === 0">
+<div class="emptyCart" *ngIf="toolsService.productsInCart.length < 2">
     <img src="assets/icon/emptyCart.png" class="imgIcon"/>
     <p class="pMessage"> Tu carrito esta vacio </p>
     <button mat-stroked-button color="accent" matTooltip="Ver productos" matTooltipPosition="below" [routerLink]="['/productos']">Ver productos</button>

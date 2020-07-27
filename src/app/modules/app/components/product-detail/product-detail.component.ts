@@ -23,8 +23,8 @@ export class ProductDetailComponent implements OnInit {
   public countItemValue: string;
 
   // weigth
-  public singular: string = ' kilo';
-  public plural: string = ' kilos';
+  public singular: string = ' libra';
+  public plural: string = ' libras';
 
   constructor(private route: ActivatedRoute,
     private productService: ProductsService,
