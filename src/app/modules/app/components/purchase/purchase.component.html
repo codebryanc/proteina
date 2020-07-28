@@ -1,5 +1,5 @@
 <!-- cart -->
-<div *ngIf="toolsService.productsInCart.length > 0">
+<div *ngIf="toolsService.productsInCart.length > 1">
     <div class="divSummary">
 
         <!-- summary -->
@@ -48,7 +48,7 @@
 </div>
 
 <!-- empty -->
-<div class="emptyCart" *ngIf="toolsService.productsInCart.length === 0">
+<div class="emptyCart" *ngIf="toolsService.productsInCart.length < 1">
     <img src="assets/icon/emptyCart.png" class="imgIcon"/>
     <p class="pMessage"> Tu carrito esta vacio </p>
     <button mat-stroked-button color="accent" matTooltip="Ver productos" matTooltipPosition="below" [routerLink]="['/productos']">Ver productos</button>
