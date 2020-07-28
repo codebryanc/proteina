@@ -22,10 +22,6 @@ export class ProductDetailComponent implements OnInit {
   private countItem: number = 0;
   public countItemValue: string;
 
-  // weigth
-  public singular: string = ' libra';
-  public plural: string = ' libras';
-
   constructor(private route: ActivatedRoute,
     private productService: ProductsService,
     private router: Router,
@@ -66,7 +62,7 @@ export class ProductDetailComponent implements OnInit {
   setLabel() {
     if(this.countItem > 0) {
       if(this.currentItem.id > 0) {
-        this.countItemValue = this.countItem + (this.countItem === 1 ? this.singular : this.plural);
+        this.countItemValue = this.countItem + (this.countItem === 1 ? this.currentItem.singular : this.currentItem.plural);
       }
       else {
         this.countItemValue = this.countItem.toString();

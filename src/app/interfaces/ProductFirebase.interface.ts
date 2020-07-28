@@ -6,4 +6,6 @@ export interface ProductFirebase {
     valor: number;
     cantidad: number;
     cantidadLetrero: string;
+    singular: string;
+    plural: string;
   }

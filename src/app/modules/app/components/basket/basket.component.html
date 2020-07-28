@@ -32,14 +32,14 @@
             <p class="ae-eta pValor">
                 Valor 
                 <a class="silver">{{currentItem.valor|currency:'COP':'symbol-narrow':'4.0'}}</a>
-                 por <a *ngIf="currentItem.id > 0">{{singular}}</a> <a *ngIf="currentItem.id === 0"> envío</a>
+                 por <a *ngIf="currentItem.id > 0">{{currentItem.singular}}</a> <a *ngIf="currentItem.id === 0"> envío</a>
             </p>
             
             <!-- itemCount -->
             <div class="divAddCart" *ngIf="currentItem.cantidad > 0">
-                <button mat-stroked-button color="warn" (click)="remover(currentItem)" matTooltip="Quitar 1 {{singular}}" matTooltipPosition="left" *ngIf="currentItem.id > 0">quitar</button>
+                <button mat-stroked-button color="warn" (click)="remover(currentItem)" matTooltip="Quitar 1 {{currentItem.singular}}" matTooltipPosition="left" *ngIf="currentItem.id > 0">quitar</button>
                 <button mat-stroked-button disabled>{{currentItem.cantidadLetrero}}</button>
-                <button mat-stroked-button color="primary" (click)="agregar(currentItem)" matTooltip="Agregar 1 {{singular}}" matTooltipPosition="right" *ngIf="currentItem.id > 0" >agregar</button>
+                <button mat-stroked-button color="primary" (click)="agregar(currentItem)" matTooltip="Agregar 1 {{currentItem.singular}}" matTooltipPosition="right" *ngIf="currentItem.id > 0" >agregar</button>
             </div>
 
             <!-- total -->

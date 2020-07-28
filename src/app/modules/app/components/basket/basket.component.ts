@@ -17,12 +17,10 @@ export class BasketComponent implements OnInit {
     titulo: 'Lo llevamos a tu hogar',
     cantidad: 1,
     valor: 4000,
-    cantidadLetrero: "1 envío"
+    cantidadLetrero: "1 envío",
+    singular: " envío",
+    plural: " envío"
   };
-
-  // Desing
-  public singular: string = " libra";
-  public plural:string = " libras";
 
   constructor(public toolsService: ToolsService) {
       this.validateShipping();
@@ -75,10 +73,10 @@ export class BasketComponent implements OnInit {
     if(currentItem.cantidad > 0) {
 
       if(currentItem.cantidad === 1) {
-        currentItem.cantidadLetrero = currentItem.cantidad + this.singular;
+        currentItem.cantidadLetrero = currentItem.cantidad + currentItem.singular;
       }
       else if(currentItem.cantidad > 1) {
-        currentItem.cantidadLetrero = currentItem.cantidad + this.plural;
+        currentItem.cantidadLetrero = currentItem.cantidad + currentItem.plural;
       }
 
     }
