@@ -27,7 +27,9 @@ export class PurchaseComponent implements OnInit {
     titulo: 'Lo llevamos a tu hogar',
     cantidad: 1,
     valor: 4000,
-    cantidadLetrero: "1 envío"
+    cantidadLetrero: "1 envío",
+    singular: " envío",
+    plural: " envío"
   };
 
   constructor(public toolsService: ToolsService,
