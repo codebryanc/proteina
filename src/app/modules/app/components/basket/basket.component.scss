@@ -22,6 +22,10 @@ svg rect{
 }
 
 // Component
+.divAddCart {
+    text-align: center;
+}
+
 .divDetail {
     padding-top: 3%;
 }
@@ -43,11 +47,6 @@ svg rect{
     font-size: 28px;
 }
 
-.divAddCart {
-    text-align: center;
-    margin: 10% 0;
-}
-
 .divTitle {
     font-size: 20px;
 }
@@ -61,12 +60,6 @@ svg rect{
 }
 
 // desing for this page
-.divCart {
-    width: 50%;
-    margin: auto;
-    padding: 0;
-}
-
 .divProduct {
     border-radius: 3%;
     -webkit-box-shadow: 5px 5px 5px 5px #f7f9fa;
@@ -90,5 +83,82 @@ svg rect{
 
 .divPurchaseGo {
     text-align: center;
-    margin: auto;
+}
+
+.divAcciones {
+    text-align: center;
+}
+
+// Media query
+@media screen and (max-width: 700px) { 
+    .divCart {
+        width: 80%;
+        margin: auto;
+        padding: 0;
+    }
+
+    .divItemForPurchase {
+        margin-bottom: 25px;
+        flex-direction: column-reverse;
+    }
+
+    .hsubTitle {
+        margin-bottom: 0;
+    }
+
+    .pValor {
+        margin-bottom: 0;
+    }
+
+    .divAddCart {
+        margin: 5% 0;
+    }
+
+    .divPurchaseGo {
+        margin: 15% auto;
+    }
+    
+    .divAcciones {
+        margin: 15% auto;
+    }
+}
+
+@media screen and (min-width: 701px) and (max-width: 1024px) { 
+    .divCart {
+        width: 60%;
+        margin: auto;
+        padding: 0;
+    }
+
+    .divAddCart {
+        margin: 10% 0;
+    }
+
+    .divPurchaseGo {
+        margin: auto;
+    }
+    
+    .divAcciones {
+        margin: 10% auto;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .divCart {
+        width: 50%;
+        margin: auto;
+        padding: 0;
+    }
+
+    .divAddCart {
+        margin: 10% 0;
+    }
+
+    .divPurchaseGo {
+        margin: auto;
+    }
+    
+    .divAcciones {
+        margin: 10% auto;
+    }
 }

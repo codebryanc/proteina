@@ -25,7 +25,7 @@
 <!-- detalle -->
 <div class="ae-container-fluid ae-container-fluid--inner rk-portfolio--inner divCart" *ngIf="toolsService.productsInCart.length > 1">
     <!-- basket -->
-    <div class="ae-grid ae-grid--collapse au-xs-ptp-1" *ngFor="let currentItem of toolsService.productsInCart">
+    <div class="ae-grid ae-grid--collapse au-xs-ptp-1 divItemForPurchase" *ngFor="let currentItem of toolsService.productsInCart">
         <div class="ae-grid__item item-lg-5 au-lg-ptp-1 divDetail divProduct">
             <h4 class="ae-u-bolder hTitle">{{currentItem.titulo}}</h4>
             <h3 class="ae-u-bolder hsubTitle">{{currentItem.categoria}}</h3>
@@ -61,6 +61,11 @@
         <div class="divTitle">
             comprar
         </div>
+    </div>
+
+    <!-- acciones -->
+    <div class="divAcciones">
+        <button mat-button color="basic" class="silver" [routerLink]="['/productos']">Seguir comprando</button>
     </div>
 </div>
 

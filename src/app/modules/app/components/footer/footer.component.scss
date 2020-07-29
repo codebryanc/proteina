@@ -2,23 +2,7 @@
     margin: 0;
 }
 
-.aAcercaDe{
-    font-size: 20px !important;
-}
-
-.pBy{
-    font-size: 20px !important;
-}
-
-.sEmailHeader{
-    font-size: 20px !important;
-}
-
 .aEmailValue{
-    font-size: 20px !important;
-}
-
-.pLayoutBy{
     font-size: 20px !important;
 }
 
@@ -30,12 +14,43 @@
     margin-bottom: 0;
 }
 
-.pCreadoPor {
-    margin-bottom: 4px;
-    font-size: 20px !important;
-}
-
 .aCreador {
     color: #7ab658;
-    font-size: 20px !important;
+}
+
+// Media query
+@media screen and (max-width: 700px) { 
+    .fontMediaQuery{
+        font-size: 18px !important;
+        margin-bottom: 5%;
+    }
+
+    .pCreadoPor {
+        margin-bottom: 0;
+    }
+
+    .dviMe {
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (min-width: 701px) and (max-width: 1024px) { 
+    .fontMediaQuery{
+        font-size: 20px !important;
+    }
+
+    .pCreadoPor {
+        margin-bottom: 4px;
+    }    
+}
+
+@media screen and (min-width: 1025px) {
+    .fontMediaQuery{
+        font-size: 20px !important;
+    }
+
+    .pCreadoPor {
+        margin-bottom: 4px;
+    }
+    
 }

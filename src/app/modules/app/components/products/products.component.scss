@@ -31,8 +31,27 @@ svg rect{
 }
 
 .divDisclaimer {
-    margin-top: 7%;
+    margin-top: 15%;
     text-align: center;
     color: silver;
     font-size: 20px;
+}
+
+// Media query
+@media screen and (max-width: 700px) { 
+    .divDisclaimer {
+        margin-top: 20%;
+    }
+}
+
+@media screen and (min-width: 701px) and (max-width: 1024px) { 
+    .divDisclaimer {
+        margin-top: 10%;
+    }    
+}
+
+@media screen and (min-width: 1025px) {
+    .divDisclaimer {
+        margin-top: 7%;
+    }
 }

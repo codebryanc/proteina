@@ -22,19 +22,10 @@ svg rect{
 }
 
 // Component
-.divDetail {
-    padding-top: 3%;
-}
-
 .imgProteinaDetail {
     border-radius: 3%;
     -webkit-box-shadow: 5px 5px 5px 5px #f7f9fa;
     box-shadow: 5px 5px 5px 5px #f7f9fa;
-}
-
-.hTitle {
-    text-align: center;
-    font-size: 42px;
 }
 
 .hsubTitle {
@@ -57,4 +48,47 @@ svg rect{
 .divAcciones {
     margin: 5% auto;
     text-align: center;
+}
+
+// Media query
+@media screen and (max-width: 700px) { 
+    .divDetailMain {
+        flex-direction: column-reverse;
+    }
+
+    .hTitle {
+        text-align: center;
+        font-size: 38px;
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (min-width: 701px) and (max-width: 1024px) { 
+    .divDetailMain {
+        flex-direction: row;
+    }
+
+    .hTitle {
+        text-align: center;
+        font-size: 42px;
+    }
+
+    .divDetail {
+        padding-top: 3%;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .divDetailMain {
+        flex-direction: row;
+    }
+
+    .hTitle {
+        text-align: center;
+        font-size: 42px;
+    }
+
+    .divDetail {
+        padding-top: 3%;
+    }
 }

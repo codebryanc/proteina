@@ -24,7 +24,7 @@
 
 <!-- detalle -->
 <div class="ae-container-fluid ae-container-fluid--inner rk-portfolio--inner" *ngIf="currentItem">
-    <div class="ae-grid ae-grid--collapse au-xs-ptp-1">
+    <div class="ae-grid ae-grid--collapse au-xs-ptp-1 divDetailMain">
         <div class="ae-grid__item item-lg-5 au-lg-ptp-1 divDetail">
             <h4 class="ae-u-bolder hTitle">{{currentItem.titulo}}</h4>
             <h3 class="ae-u-bolder hsubTitle">{{currentItem.categoria}}</h3>
@@ -53,10 +53,11 @@
             <img class="imgProteinaDetail" src="assets/img/products/{{currentItem.imagen}}" alt="Proteína">
         </div>
 
+    </div>
+
         <!-- acciones -->
         <div class="divAcciones" *ngIf="!btnAddToCartVisible">
             <button mat-button color="basic" class="silver" [routerLink]="['/productos']">Seguir comprando</button>
             <button mat-button color="basic" class="silver" [routerLink]="['/carrito']">Ver carrito</button>
         </div>
-    </div>
 </div>
